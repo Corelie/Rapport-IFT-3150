@@ -1,8 +1,4 @@
-body {
-  
-  margin:0;
-padding:0;
-}
+
 
 nav {
   background-color:#fcdc04;
@@ -62,10 +58,26 @@ h3{
   padding: 10px;
  
 }
-#RapportsHebdo {
-    padding: 10px;
-}
+
 
 #RapportFinal {
     padding: 10px;
+}
+#boutonHebdo {
+    background-color: #fcdc04;
+    border: none;
+    color: black;
+   
+    text-align: center;
+    
+    display: inline-block;
+  
+    cursor: pointer;
+    font-weight: bold;
+    font-size: larger;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+code {
+    background-color:rgba(0, 0, 0, .05);
 }
