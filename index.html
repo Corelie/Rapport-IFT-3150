@@ -19,6 +19,7 @@
                 <li><a class="dropdown-item" href="#Semaine3">Semaine 3</a></li>
                 <li><a class="dropdown-item" href="#Semaine4">Semaine 4</a></li>
                 <li><a class="dropdown-item" href="#Semaine5">Semaine 5</a></li>
+                <li><a class="dropdown-item" href="#Semaine6">Semaine 6</a></li>
 
             </ul>
           </div>
@@ -75,10 +76,68 @@
             J'ai donc copié ce fichier et renommé la copie en .env ce qui a réglé ce problème. <br>
             <code>cp .env.example .env</code>
         </p>
-        <h3 id ="Semaine5">Semaine 5 (Mai 30- Juin 6)</h3>
-        <p></p>
-        <h3 id ="Semaine6">Semaine 6 (Juin 7- Juin 13)</h3>
-        <p></p>
+        <h3 id ="Semaine5">Semaine 5 (Mai 30- Juin 5)</h3>
+        <p> Cette semaine j'ai continué à discuter avec Simon pour essayer de comprendre mes problèmes de connexion. J'ai réussi à comprendre que certains problèmes provenait du fait que le fichier .env n'était pas connecté correctement. Il fallait modifier le db host pour qu'il soit connecté à mariadb (voir le tutoriel complet la semaine d'après).
+            En attendant de résoudre ce problème j'ai commencé à lire le code du serveur pour essayer de comprendre comment il fonctionne. J'ai commencé à noter ce que je comprends du code au fur et à mesure dans un fichier Miro pour m'aider à m'y retrouver. Le Miro est disponible <a href="https://miro.com/app/board/uXjVK_5GXPQ=/?share_link_id=223955028395">ici</a>.
+        </p>
+        <h3 id ="Semaine6">Semaine 6 (Juin 6- Juin 13)</h3>
+        <p>J'ai débuté cette semaine par un appel avec Simon pour essayer une fois de plus de résoudre mes problèmes. Après de nombreuses tentatives infructueuses j'ai décidé que j'allais effacer entièrement tout le système Linux de mon ordinateur ainsi que docker afin de recommencer tout au propre.
+            Une fois cela fait et quelques recherches supplémentaires sur des commandes qu'il aurait pu me manquer j'ai enfin réussi à me connecter au serveur en localhost! Voir le tutoriel plus bas pour toutes les étapes précises à faire en cas de problème similaire. Après cela je n'ai malheureusement pas pu avancer plus loin puisque j'avais deux examens cette semaine.
+        </p>
+        <h4>Tutoriel pour se connecter au serveur</h4>
+        <p>Voici les étapes à suivre pour se connecter au serveur en localhost (sur windows ou linux): </p>
+        <ol>
+            <li> (Pour windows) Installer WSL2 et Ubuntu (ou autre distribution linux), faites bien attention qu'ils soient installés correctement, je pense qu'une partie du problème provenait peut-être de là pour moi</li>
+            <li> Installer Docker et Docker-compose <a href="https://docs.docker.com/desktop/install/ubuntu/">(lien)</a> (pour windows j'ai également téléchargé le fichier <a href="https://docs.docker.com/desktop/install/windows-install/">suivant</a>)</li>
+            <li> (Pour windows) Ouvrir Docker desktop dans le fond </li>
+            <li> Dans Ubuntu, cloner le projet Mona-serveur :<br>
+            <code>git clone (lien du projet)</code><br>
+            Le lien du projet est disponible sur le github de Mona-server<br> 
+            <img src="Screenshot_lien_github_mona.png" alt="lien github" width="500px"><br>
+            Il y a d'autres façons de cloner le projet mais moi je clonais à l'aide d'une clé SSH, voici comment faire si c'est la première fois comme moi:<br>
+            <ol>
+                <li> Sur github aller dans settings -> SSH and GPG keys -> New SSH key</li>
+                <li> Créez votre clé et bien la prendre en note car elle ne sera plus disponible après (vous pouvez toujours en générer une nouvelle si jamais vous la perdez)</li>
+                <li> Une fois la commande git clone lancée il se peut que l'on demande un nom d'utilisateur, c'est votre nom d'utilisateur github.<br>
+                Par contre attention le password <b> n'est pas votre mot de passe github</b>, il s'agit de la clé SSH que vous venez de créer.</li>
+            </ol>
+            </li>
+            <li> Se déplacer dans le dossier du projet Mona-serveur <br>
+            <code>cd mona-serveur</code>    </li>
+            <li> Copier le fichier .env.example et le renommer en .env <br>
+            <code>cp .env.example .env</code>    </li>
+            <li> Il faut modifier le fichier .env puisqu'il doit être connecté à la base de données mariadb.
+                <ol>
+                    <li>Ouvrir le fichier .env en mode édition<br>
+                    <code>vim .env</code></li>
+                    <li>A l'aide des flèches du clavier se déplacer jusqu'à la ligne <b>DB_HOST= </b> appuyer sur <b>i</b> pour entrer en mode insertion et modifier la ligne pour qu'elle ressemble à ceci:<br>
+                    <code>DB_HOST=mariadb</code></li>
+                    <li>Appuyer sur <b>esc</b> pour sortir du mode insertion puis <b>:wq</b> pour sauvegarder et quitter le fichier</li>
+                </ol>
+            </li>
+            <li> Lancer le serveur dans le fond à l'aide de la commande :<br>
+                <code> ./vendor/laravel/sail/bin/sail up -d</code><br>
+                Je n'ai personnellement pas eu à le faire mais il est possible qu'il faille permettre à ce fichier d'être exécuté à l'aide de la commande : <br>
+                <code>chmod +x ./vendor/laravel/sail/bin/sail</code>
+            </li>
+            <li>Installer composer sur le projet: <br>
+            <code>./vendor/laravel/sail/bin/sail composer install</code></li>
+            <li>Mettre à jour composer: <br>
+            <code>./vendor/laravel/sail/bin/sail composer update</code></li>
+            <li> Générer la clé PHP: <br>
+            <code>./vendor/laravel/sail/bin/sail php artisan key:generate</code></li>
+            <li> Fermer le serveur qui roulait dans le fond: <br>
+            <code>./vendor/laravel/sail/bin/sail down </code></li>
+            <li> Relancer le serveur dans la console: <br>
+            <code>./vendor/laravel/sail/bin/sail up</code></li>
+            <li> Vous devriez maintenant pouvoir accéder à l'application en tapant localhost dans votre navigateur! De plus la console ne devrait pas afficher d'erreurs</li>
+            <li> Pour arrêter le serveur entrer Ctrl+C dans la console puis :
+            <code>./vendor/laravel/sail/bin/sail down</code>
+            </li>
+
+            
+           
+        </ol>
         <h3 id ="Semaine7">Semaine 7 (Juin 14- Juin 20)</h3>
         <p></p>
         <h3 id ="Semaine8">Semaine 8 (Juin 21- Juin 27)</h3>
