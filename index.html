@@ -94,12 +94,12 @@
             <code>git clone (lien du projet)</code><br>
             Le lien du projet est disponible sur le github de Mona-server<br> 
             <img src="Screenshot_lien_github_mona.png" alt="lien github" width="500px"><br>
-            Il y a d'autres façons de cloner le projet mais moi je clonais à l'aide d'une clé SSH, voici comment faire si c'est la première fois comme moi:<br>
+            Il y a d'autres façons de cloner le projet mais moi je clonais à l'aide d'un personal access token, voici comment faire si c'est la première fois comme moi:<br>
             <ol>
-                <li> Sur github aller dans settings -> SSH and GPG keys -> New SSH key</li>
-                <li> Créez votre clé et bien la prendre en note car elle ne sera plus disponible après (vous pouvez toujours en générer une nouvelle si jamais vous la perdez)</li>
+                <li> Sur github aller dans settings -> Developer settings -> Personal access tokens -> Tokens (classic) -> Generate new token</li>
+                <li> Créez votre token et bien le prendre en note car il ne sera plus disponible après (vous pouvez toujours en générer un nouveau si jamais vous le perdez)</li>
                 <li> Une fois la commande git clone lancée il se peut que l'on demande un nom d'utilisateur, c'est votre nom d'utilisateur github.<br>
-                Par contre attention le password <b> n'est pas votre mot de passe github</b>, il s'agit de la clé SSH que vous venez de créer.</li>
+                Par contre attention le password <b> n'est pas votre mot de passe github</b>, il s'agit du personal access token que vous venez de créer.</li>
             </ol>
             </li>
             <li> Se déplacer dans le dossier du projet Mona-serveur <br>
@@ -120,10 +120,10 @@
                 Je n'ai personnellement pas eu à le faire mais il est possible qu'il faille permettre à ce fichier d'être exécuté à l'aide de la commande : <br>
                 <code>chmod +x ./vendor/laravel/sail/bin/sail</code>
             </li>
-            <li>Installer composer sur le projet: <br>
-            <code>./vendor/laravel/sail/bin/sail composer install</code></li>
             <li>Mettre à jour composer: <br>
             <code>./vendor/laravel/sail/bin/sail composer update</code></li>
+            <li>Installer composer sur le projet: <br>
+            <code>./vendor/laravel/sail/bin/sail composer install</code></li>
             <li> Générer la clé PHP: <br>
             <code>./vendor/laravel/sail/bin/sail php artisan key:generate</code></li>
             <li> Fermer le serveur qui roulait dans le fond: <br>
