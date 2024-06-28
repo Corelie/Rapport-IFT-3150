@@ -139,9 +139,29 @@
            
         </ol>
         <h3 id ="Semaine7">Semaine 7 (Juin 14- Juin 20)</h3>
-        <p></p>
+        <p>
+            Cette semaine j'ai eu plusieures réunions avec différents membres de l'équipe pour que je puisse enfin pouvoir commencer à vraiment travailer sur le serveur. J'ai commencé par la réunion habituelle avec Léna et Sarah pour discuter de notre avancement, Léna m'a indiqué que je devrais contacter Camilla qui fait partie de l'équipe de recherche de Mona et pour qui l'interface admin est surtout utile, elle m'a également mentionné qu'elle aimerait que je travaille sur un système de tags pour les photos et les oeuvres.
+            Lundi j'ai pu avoir un appel avec Camilla que je remercie grandement d'avoir pris le temps de me parler juste avant son départ en vacances! Elle m'a expliqué les besoins les plus importants de l'interface:
+            <ul>
+                <li> D'abord anonymiser les données, il est possible de voir les noms des utilisateurs dans l'interface admin ce qui va à l'encontre de la politique de l'application qui est de ne pas collecter de données personnelles et est également nuisible pour son travail.</li>
+                <li> Ajouter un système de tags pour les photos et les oeuvres, cela permettrait de mieux les classer et de les retrouver plus facilement. Elle voudrait pouvoir avoir un système pour ajouter ces tags (sous la forme de # ajoutés sur l'oeuvre) et ensuite pouvoir faire des recherches
+                    en spécifiant vouloir inclure ou exclure certains tags.</li>
+                <li>Finalement pouvoir améliorer l'esthétique de l'interface admin surtout lors de l'arrivée sur le site. En effet, elle m'a partagé trouver cela un peu décourageant d'arriver directement en plein milieu de l'interface admin avec toutes les données affichées sans trop comprendre. Nous avons
+                    discuté de la possibilité de mettre en place une page d'acceuil plus conviviale avec des informations plus générales. Pour cela il serait possible de reprendre la page chiffres clés qui est pour l'instant un peu inutile (elle ne comporte qu'un petit tableau avec quelques lignes sur le nombre de photos sur le site). Nous pourrions y ajouter une "curiosité" du jour (un peu comme un fun fact) sur les données de Mona qui changerait à chaque fois. Cette curiosité serait ensuite illustrée par un diagramme simple (par exemple la curiosité pourrait être "80% des oeuvres d'art de Montréal sont réalisé par des hommes avec en dessous un "pie chart" avec le pourcentage d'oeuvres réalisées par des hommes, des femmes ou autres à Montréal).
+                    J'avais également pensé pouvoir rajouter le tableau chiffres clés en dessous avec potentiellemnt un peu plus d'informations, car il reste intéressant à consulter.
+                </li>
+            </ul>
+            Ce même jour j'ai également eu une réunion avec Simon qui m'a envoyé des données pour peupler la base de mon serveur local. Il m'a expliqué comment faire cette migration ainsi que de comment me créer un compte admin pour pouvoir me connecter à l'interface. Il m'a également présenté le fonctionnement du serveuer et à quoi servait les différentes parties du code.<br>
+            J'ai ensuite commencé à découvrir le code et son fonctionnement et j'ai pu déjà régler le problème de l'anonymisation, maintenant lorsque l'on consulte les informations d'un utilisateur on ne voit plus que son ID d'utilisateur (ce qui permet de suivre ce que fait un même utilisateur mais sans pouvoir l'identifier). 
+        </p>
         <h3 id ="Semaine8">Semaine 8 (Juin 21- Juin 27)</h3>
-        <p></p>
+        <p>
+            Cette semaine j'ai pu commencer à travailler sur le système de tags. En consultant le code je me suis aperçue qu'il semblait déjà avoir eu un début de travail sur cela, en consultant l'historique github j'ai pu m'apercevoir qu'il s'agissait du travail de Natacha Rivière qui avait commencé là dessus en hiver 2023. En consultant ses rapports j'ai repris là où elle s'était arretée.
+            Elle avait configuré une page pour l'ajout de tags mais une fois que l'on ajoutait un tag nous étions redirigés vers une page d'erreur. J'ai réglé ce problème en ajoutant un target à la balise form dans la page d'ajout de tags pour éviter d'être redirigé là ou le form envoyait les données. <br>
+            J'ai également pu commencer à travailler sur la page de recherche par tags, cependant j'ai rencontré certains problèmes. Je n'étais pas capable de modifier les fichier vue.js et donc était incapable d'ajouter du javascript dans ma page (puisque la page était insérée dans un fichier vue qui comprenais déjà du javascript cela retournait des erreurs). Jétais également incapable de créer des nouvelles routes et donc de faire pointer un bouton Advanced search vers cette page là, j'ai cependant pu modifier la route du bouton creat artwork pour pointer vers cette page là en attendant donc j'ai pu avancer sur mon travail comme ça en attendant.
+            <br>
+            J'ai parlé de mon problème avec vue.js à Simon qui m'a dit qu'il pensait que cela puisse provenir du fait que nous utilisions webpack et qu'il était probable que je doive faire une certaine commande npm mais il ne savait pas laquelle. Il m'a envoyé un lien vers de la documentation Laravel, malheureusement j'ai suivi les commandes de ce liens et à chque étape n'ai fait que rencontrer de plus en plus d'erreurs sur des commandes qui devraient normalement fonctionner. Au bout de plusieures heures tout ce que j'avais pu faire c'est de complètement faire disparaitre les vues, j'ai donc réinstallé le projet en entier de 0 et nous avons convenus avec Simon de se rencontrer la semaine prochaine.
+        </p>
         <h3 id ="Semaine9">Semaine 9 (Juin 28- Juillet 4)</h3>
         <p></p>
         <h3 id ="Semaine10">Semaine 10 (Juillet 5- Juillet 11)</h3>
